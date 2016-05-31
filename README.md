@@ -1,5 +1,4 @@
-# mobile_inference_api
-Mobile Inference API based on nvidia GPU rest engine
+# Bitfusion Mobile Inference API
 
 This API is based on: 
 
