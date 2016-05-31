@@ -52,7 +52,7 @@ SYNSET_WORDS="caffe/data/ilsvrc12/synset_words.txt"
 ## Starting GPU Rest Engine via docker
 
 
-```
+
 This would start server with bvlc reference caffe model trained with ilsvrc12 dataset. Server listens on port 8000
 
 ```
