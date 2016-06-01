@@ -1,13 +1,13 @@
 # Bitfusion Mobile Inference API
 
-This AMI is designed to run on the following EC2 instances:
+This AMI is designed to run on the following GPU enabled EC2 instances:
 
 * g2.2xlarge
 * g2.8xlarge
 
 ## GPU REST ENGINE API
 
-Theis AMI leverages nvidia GPU rest engine: https://github.com/NVIDIA/gpu-rest-engine
+This AMI leverages nvidia GPU rest engine: https://github.com/NVIDIA/gpu-rest-engine
 
 GPUs are efficient parallel processors that can deliver low-latency response times for services responding to arbitrary incoming requests.
 
@@ -31,14 +31,15 @@ curl \
 sudo service gpurestengine start
 ```
 
-For the example model provided on the system you can select one of the training models:
+Several trained example model are provided on the system amongst which you can select:
  * CaffeNet
  * AlextNet
  * GoogleNet
  
-If you have trained your own model you can update the variables to point to your definitions.
+You can use this AMI to train your own Caffe model as well. If you have trained your own model simply update the variables below to point to your model collateral.
 
-Example "/etc/default/gpurestengine" provided:
+The GPU Rest API start on boot and can be configured using the provided "/etc/default/gpurestengine" script:
+
 
 ```
 # Caffe Model - Default
@@ -66,7 +67,7 @@ SYNSET_WORDS="caffe/data/ilsvrc12/synset_words.txt"
 sudo service gpurestengine start
 ```
 
-## Starting GPU Rest Engine via docker
+## Starting the GPU Rest Engine Manually 
 
 This would start server with bvlc reference caffe model trained with ilsvrc12 dataset. Server listens on port 8000
 
@@ -106,18 +107,18 @@ nvidia-docker run --name=gpurestengine --net=host --rm \
 
 ## Accessing the Container & Creating A Model
 
-If you intend to build your own model, you will need to run the container and login, you can do this by running:
+To build your own model you need to access the container after you SSH into the EC2 instance. You can do this by running:
 
 ```
 docker run --interactive --rm -t bitfusion/gpurestengine /bin/bash
 ```
 
-### Adding A Model
+### Training your own model with imagenet
 
-A person could train ther own model and deploy it in a similar fashion. Good place to start is the following for training with imagenet: http://caffe.berkeleyvision.org/gathered/examples/imagenet.html
+To train your own model a good place to start is the following tutorial for training a model with imagenet: http://caffe.berkeleyvision.org/gathered/examples/imagenet.html
 
 
-#### Training a model:
+#### Training your own model with your own dataset:
 
 To train on your own dataset you can follow the steps outlined here: https://github.com/BVLC/caffe/issues/550
 
