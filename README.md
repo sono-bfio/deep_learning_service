@@ -1,4 +1,4 @@
-# Bitfusion Mobile Inference API
+# Bitfusion Mobile Deep Learning Service
 
 This AMI is designed to run on the following GPU enabled EC2 instances:
 
