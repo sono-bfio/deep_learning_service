@@ -1,16 +1,21 @@
 # Bitfusion Mobile Inference API
 
-This API is based on: 
+This AMI is designed to run on the following EC2 instances:
 
-https://github.com/NVIDIA/gpu-rest-engine
+* g2.2xlarge
+* g2.8xlarge
+
+## GPU REST ENGINEAPI is based 
+
+The AMI leverages nvidia GPU rest engine: https://github.com/NVIDIA/gpu-rest-engine
 
 GPUs are efficient parallel processors that can deliver low-latency response times for services responding to arbitrary incoming requests.
 
 The NVIDIA GPU REST Engine (GRE) is a critical component for developers building low-latency web services. GRE includes a multi-threaded HTTP server that presents a RESTful web service and schedules requests efficiently across multiple NVIDIA GPUs. The overall response time depends on how much processing you need to do, but GRE itself adds very little overhead and can process null-requests in as little as 10 microseconds.
 
 
+## Example Curl Call
 
-Example call:
 ```
 host="EC2 instance IP"
 curl \
@@ -19,6 +24,7 @@ curl \
    --data-binary @images/1.jpg \
    http://${host}:8000/api/classify
 ```
+
 ## Starting the GPU Rest Engine via init script:
 
 ```
@@ -54,9 +60,13 @@ SYNSET_WORDS="caffe/data/ilsvrc12/synset_words.txt"
 #SYNSET_WORDS="caffe/data/ilsvrc12/synset_words.txt"
 ```
 
+### 
+
+```
+sudo service gpurestengine start
+```
+
 ## Starting GPU Rest Engine via docker
-
-
 
 This would start server with bvlc reference caffe model trained with ilsvrc12 dataset. Server listens on port 8000
 
@@ -94,12 +104,20 @@ nvidia-docker run --name=gpurestengine --net=host --rm \
 
 ```
 
-# Adding A Model
+## Accessing the Container & Creating A Model
+
+If you intend to build your own model, you will need to run the container and login, you can do this by running:
+
+```
+docker run --interactive --rm -t bitfusion/gpurestengine /bin/bash
+```
+
+### Adding A Model
 
 A person could train ther own model and deploy it in a similar fashion. Good place to start is the following for training with imagenet: http://caffe.berkeleyvision.org/gathered/examples/imagenet.html
 
 
-# Training a model:
+#### Training a model:
 
 To train on your own dataset you can follow the steps outlined here: https://github.com/BVLC/caffe/issues/550
 
