@@ -5,6 +5,7 @@ This API is based on:
 https://github.com/NVIDIA/gpu-rest-engine
 
 To Summarize:
+
 GPUs are efficient parallel processors that can deliver low-latency response times for services responding to arbitrary incoming requests.
 
 The NVIDIA GPU REST Engine (GRE) is a critical component for developers building low-latency web services. GRE includes a multi-threaded HTTP server that presents a RESTful web service and schedules requests efficiently across multiple NVIDIA GPUs. The overall response time depends on how much processing you need to do, but GRE itself adds very little overhead and can process null-requests in as little as 10 microseconds.
