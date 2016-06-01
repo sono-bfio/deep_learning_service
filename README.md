@@ -5,9 +5,9 @@ This AMI is designed to run on the following EC2 instances:
 * g2.2xlarge
 * g2.8xlarge
 
-## GPU REST ENGINEAPI is based 
+## GPU REST ENGINE API
 
-The AMI leverages nvidia GPU rest engine: https://github.com/NVIDIA/gpu-rest-engine
+Theis AMI leverages nvidia GPU rest engine: https://github.com/NVIDIA/gpu-rest-engine
 
 GPUs are efficient parallel processors that can deliver low-latency response times for services responding to arbitrary incoming requests.
 
@@ -121,4 +121,7 @@ A person could train ther own model and deploy it in a similar fashion. Good pla
 
 To train on your own dataset you can follow the steps outlined here: https://github.com/BVLC/caffe/issues/550
 
+## Support
+
+Contact us a support@bitfusion.io
 
